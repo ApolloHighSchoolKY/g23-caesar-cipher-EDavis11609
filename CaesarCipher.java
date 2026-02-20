@@ -35,8 +35,6 @@ public class CaesarCipher {
         {
             //What letter is in the current position of the message
             char current = message.charAt(i);
-            //A index if a character in the message exists
-            int index = -1;
             //A boolean sentinal to stop the loop once the condition is met
             boolean found = false;
 
@@ -45,50 +43,44 @@ public class CaesarCipher {
             {
                 if(alphabet[a] == current && !found)
                 {
-                    index = a;
+                    result += shifted[a];
                     found = true;
                 }
             }
             //During the looping process, if a letter was found and caused index not to be -1 
             //then it gets shifted and added to the result
-            if(index != -1)
-                result += shifted[index];
-            else
-                //Add the unchanged character 
-                result += current;        
+            if(!found)
+                result += current;      
         }
         return result;
 
     }
 
     public String decrypt(String message){
-        String result = "";
-        //Turning the message to lower case
+         String result = "";
+        //In case if their are any capitals so we can exactly relate back to alpha
         message = message.toLowerCase();
 
         for(int i =0; i<message.length();i++)
         {
-            //Same as last time we need a variable to 
-            //keep track of the current position in the message
+            //What letter is in the current position of the message
             char current = message.charAt(i);
-            //Same purpose as the encrypt method
-            int index = -1;
+            //A boolean sentinal to stop the loop once the condition is met
             boolean found = false;
 
-            //Now we have to look for the char in shifted to decrpyt
-            for(int a = 0; a<shifted.length; a++)
+            //Looping through the alphabet
+            for(int a = 0; a< alphabet.length; a++)
             {
-                if(shifted[a]==current && !found)
+                if(shifted[a] == current && !found)
                 {
-                    index = a;
+                    result += alphabet[a];
                     found = true;
                 }
             }
-            //Now we map the message back to the normal alphabet
-            if(index != -1)
-                result += alphabet[index];
-            else
-                result += current;
+            //During the looping process, if a letter was found and caused index not to be -1 
+            //then it gets shifted and added to the result
+            if(!found)
+                result += current;      
         }
         return result;
 
