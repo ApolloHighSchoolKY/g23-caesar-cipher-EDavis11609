@@ -23,9 +23,7 @@ public class CaesarCipher {
     public CaesarCipher(int num){
         alphabet = new char[26];
         shifted = new char[26];
-        shifter(num);
-
-        
+        shifter(num);  
     }
 
     public String encrypt(String message){
@@ -78,9 +76,9 @@ public class CaesarCipher {
             boolean found = false;
 
             //Now we have to look for the char in shifted to decrpyt
-            for(int a = 0; a<shifted.length && !found;a++)
+            for(int a = 0; a<shifted.length; a++)
             {
-                if(shifted[a]==current)
+                if(shifted[a]==current && !found)
                 {
                     index = a;
                     found = true;
@@ -110,9 +108,6 @@ public class CaesarCipher {
             if(shiftedSpot<0)
                     shiftedSpot += 26;
             shifted[i] = alpha.charAt(shiftedSpot);
-        }
-        
+        }   
     }
-
-
 }

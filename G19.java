@@ -21,8 +21,9 @@ public class G19 {
 
 		CaesarCipher cipherTwo = new CaesarCipher(8);
 
+		System.out.println();
 		System.out.println(cipherTwo.encrypt("What is going on"));
-		System.out.println(cipherTwo.decrypt("r sdbc fjwwj yjbb cqrb lujbb"));
+		System.out.println(cipherTwo.decrypt("Gwc pidqvo ncv gmb?"));
     }
 
 
